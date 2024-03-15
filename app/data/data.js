@@ -1,9 +1,4 @@
-import Styles from './CardsList.module.css'
-import { Card } from "@/app/components/Card/card"
-
-export const CardsList = (props) => {
-
-  const popularGames = [
+export const data = [
     {
       id: 1,
       title: "Crystal Keeper",
@@ -13,6 +8,20 @@ export const CardsList = (props) => {
       image:
         "https://code.s3.yandex.net/teens/pindie-games/cristal-keeper/cover.png",
       link: "https://code.s3.yandex.net/teens/pindie-games/cristal-keeper/game/index.html",
+      category: [
+        {
+          id: 1,
+          name: "new",
+        },
+        {
+          id: 2,
+          name: "pixel",
+        },
+        {
+          id: 3,
+          name: "TDS",
+        },
+      ],
       users: [
         {
           id: 1,
@@ -40,6 +49,20 @@ export const CardsList = (props) => {
       image:
         "https://code.s3.yandex.net/teens/pindie-games/dangeons-n-caves-prologue/cover.png",
       link: "https://code.s3.yandex.net/teens/pindie-games/dangeons-n-caves-prologue/game/index.html",
+      category: [
+        {
+          id: 1,
+          name: "new",
+        },
+        {
+          id: 2,
+          name: "pixel",
+        },
+        {
+          id: 4,
+          name: "shooter",
+        },
+      ],
       users: [
         {
           id: 1,
@@ -67,6 +90,20 @@ export const CardsList = (props) => {
       image:
         "https://code.s3.yandex.net/teens/pindie-games/defence-of-crystal/cover.png",
       link: "https://code.s3.yandex.net/teens/pindie-games/defence-of-crystal/game/index.html",
+      category: [
+        {
+          id: 1,
+          name: "new",
+        },
+        {
+          id: 4,
+          name: "shooter",
+        },
+        {
+          id: 5,
+          name: "popular",
+        },
+      ],
       users: [
         {
           id: 1,
@@ -85,9 +122,6 @@ export const CardsList = (props) => {
         },
       ],
     },
-  ];
-
-  const newGames = [
     {
       id: 4,
       title: "Go Away",
@@ -96,6 +130,16 @@ export const CardsList = (props) => {
         'Управляй автомобилем, избегая аварий и перепрыгивая препятствия на пути к следующему уровню.',
       image: "https://code.s3.yandex.net/teens/pindie-games/go-away/cover.jpg",
       link: "https://code.s3.yandex.net/teens/pindie-games/go-away/game/index.html",
+      category: [
+        {
+          id: 2,
+          name: "popular",
+        },
+        {
+          id: 6,
+          name: "runner",
+        },
+      ],
       users: [
         {
           id: 1,
@@ -122,6 +166,24 @@ export const CardsList = (props) => {
         "Продержись как можно дольше, отбиваясь от врагов, которых будет становиться всё больше.",
       image: "https://code.s3.yandex.net/teens/pindie-games/gunner/cover.png",
       link: "https://code.s3.yandex.net/teens/pindie-games/gunner/game/index.html",
+      category: [
+        {
+          id: 1,
+          name: "new",
+        },
+        {
+          id: 5,
+          name: "popular",
+        },
+        {
+          id: 3,
+          name: "TDS",
+        },
+        {
+          id: 4,
+          name: "shooter",
+        },
+      ],
       users: [
         {
           id: 1,
@@ -149,6 +211,16 @@ export const CardsList = (props) => {
       image:
         "https://code.s3.yandex.net/teens/pindie-games/space-terror/cover.png",
       link: "https://code.s3.yandex.net/teens/pindie-games/space-terror/game/index.html",
+      category: [
+        {
+          id: 2,
+          name: "popular",
+        },
+        {
+          id: 5,
+          name: "shooter",
+        },
+      ],
       users: [
         {
           id: 1,
@@ -175,6 +247,20 @@ export const CardsList = (props) => {
       image:
         "https://code.s3.yandex.net/teens/pindie-games/square-slayer/cover.png",
       link: "https://code.s3.yandex.net/teens/pindie-games/square-slayer/game/index.html",
+      category: [
+        {
+          id: 1,
+          name: "new",
+        },
+        {
+          id: 2,
+          name: "popular",
+        },
+        {
+          id: 5,
+          name: "shooter",
+        },
+      ],
       users: [
         {
           id: 1,
@@ -194,23 +280,3 @@ export const CardsList = (props) => {
       ],
     },
   ];
-
-  const targetArray = props.id === "popular" ? popularGames : props.id === "new" && newGames;
-
-  return (
-    <section className={Styles["list-section"]}>
-      <h2 className={Styles["list-section__title"]} id={props.id}>{props.title}</h2>
-      <ul className={Styles["cards-list"]}>
-        {targetArray.map((item) => {
-          return (
-            <li className={Styles["cards-list__item"]} key={item.id}>
-              <a href={item.link} target="_blank" className={Styles["card-list__link"]}>
-                <Card {...item} />
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-    </section>
-  )
-}
