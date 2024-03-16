@@ -1,5 +1,5 @@
 import Styles from './CardsList.module.css'
-import { Card } from "@/app/components/Card/card"
+import { Card } from "@/app/components/Card/Card"
 
 export const CardsList = (props) => {
 
