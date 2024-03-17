@@ -37,27 +37,27 @@ export const Header = () => {
             </Link>
           </li>
           <li className={Styles['menu__item']}>
-            <Link href="popular" className={`${Styles["menu__link"]} ${pathname === "/popular" ? Styles["menu__link_active"] : ""}`}>
+            <Link href="/popular" className={`${Styles["menu__link"]} ${pathname === "/popular" ? Styles["menu__link_active"] : ""}`}>
               Популярные
             </Link>
           </li>
           <li className={Styles['menu__item']}>
-            <Link href="shooter" className={`${Styles["menu__link"]} ${pathname === "/shooter" ? Styles["menu__link_active"] : ""}`}>
+            <Link href="/shooter" className={`${Styles["menu__link"]} ${pathname === "/shooter" ? Styles["menu__link_active"] : ""}`}>
               Шутеры
             </Link>
           </li>
           <li className={Styles['menu__item']}>
-            <Link href="runner" className={`${Styles["menu__link"]} ${pathname === "/runner" ? Styles["menu__link_active"] : ""}`}>
+            <Link href="/runner" className={`${Styles["menu__link"]} ${pathname === "/runner" ? Styles["menu__link_active"] : ""}`}>
               Ранеры
             </Link>
           </li>
           <li className={Styles['menu__item']}>
-            <Link href="pixel" className={`${Styles["menu__link"]} ${pathname === "/pixel" ? Styles["menu__link_active"] : ""}`}>
+            <Link href="/pixel" className={`${Styles["menu__link"]} ${pathname === "/pixel" ? Styles["menu__link_active"] : ""}`}>
               Пиксельные
             </Link>
           </li>
           <li className={Styles['menu__item']}>
-            <Link href="TDS" className={`${Styles["menu__link"]} ${pathname === "/TDSs" ? Styles["menu__link_active"] : ""}`}>
+            <Link href="/TDS" className={`${Styles["menu__link"]} ${pathname === "/TDS" ? Styles["menu__link_active"] : ""}`}>
               TDS
             </Link>
           </li>
