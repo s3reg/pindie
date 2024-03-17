@@ -58,6 +58,8 @@
   background-color: #ffff00;
 }
 
+
+
 .auth {
   display: flex;
 }
@@ -130,4 +132,9 @@
   .banner {
     padding: 80px 14px;
   }
+}
+
+.menu__link_active {
+  background-color: #ffff00;
+  pointer-events: none;
 }
