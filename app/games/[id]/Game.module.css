@@ -1,4 +1,31 @@
 
+
+
+.error__404 {
+  width: 100%;
+  height: 100%;
+  border: none;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  
+}
+
+.error__title {
+  font-size: 42px;
+  margin-bottom: 26px;
+  line-height: 1;
+  width: fit-content;
+  background-color: #2400FF;
+  color: white;
+  padding: 40px 260px;
+  gap: 20px;
+  margin: 40px auto 0;
+  border-top: 4px solid black;
+  border-bottom: 4px solid black;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
 .game {
     padding: 72px 96px;
   }
