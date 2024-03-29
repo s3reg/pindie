@@ -87,7 +87,7 @@ export const getMe = async (url, jwt) => {
 };
 
 export const setJWT = (jwt) => {
-    licalStorage.setItem("jwt", jwt);
+    localStorage.setItem("jwt", jwt);
 };
 export const getJWT = () => {
     return localStorage.getItem("jwt");
@@ -98,21 +98,21 @@ export const removeJWT = () => {
 
 
 
-export const vote = async (jwt) => {
+export const vote = async (url, jwt, usersIdArray) => {
     try {
         const response = await fetch(
-            "https://api-code-2.practicum-team.ru/games/6", {
+            url, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${jwt}`,
             },
             body: JSON.stringify({
-                users_permissions_users: [1, 2, 3, 5]
+                users_permissions_users: usersIdArray,
             }),
         });
         if (response.status !== 200) {
-            throw new Error("Ошибка авторизации");
+            throw new Error("Ошибка получения данных");
         }
         const result = await response.json();
         return result;
@@ -122,6 +122,6 @@ export const vote = async (jwt) => {
 };
 
 
-export const checkIfUsersVoted = (users, id) =>{
-    return users.find((user) => user.id === id);
-};
+export const checkIfUsersVoted = (game, userId) => {
+    return game.users.find((user) => user.id === userId)
+}

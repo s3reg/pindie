@@ -8,7 +8,7 @@ import Styles from './Header.module.css'
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation.js';
 import { endpoints } from '@/app/api/config.js';
-import { getJWT, getMe, isResponseOk } from "@/app/api/api-utils.js";
+import { removeJWT, getJWT, getMe, isResponseOk } from "@/app/api/api-utils.js";
 
 
 export const Header = () => {
@@ -22,14 +22,8 @@ export const Header = () => {
     setPopupIsOpened(false);
   };
 
-  const pathname = usePathname()
-  const handleLogout = () => {
-    setIsAuthorized(false);
-    removeJWT()
-  };
-
+  
   useEffect(() => {
-    const jwt = getJWT();
     const handleAuthorized = async (jwt) => {
       const userData = await getMe(endpoints.me, jwt)
       if (isResponseOk(userData)) {
@@ -39,12 +33,18 @@ export const Header = () => {
         setIsAuthorized(false)
         removeJWT()
       }
-    }
+    };
+    const jwt = getJWT();
     if (jwt) {
       handleAuthorized(jwt)
     }
   }, []);
 
+  const pathname = usePathname()
+  const handleLogout = () => {
+    setIsAuthorized(false);
+    removeJWT();
+  };
 
 
 

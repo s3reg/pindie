@@ -1,5 +1,8 @@
 
-
+.about__vote-button:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
 
 .error__404 {
   width: 100%;
@@ -79,7 +82,8 @@
   .about__accent {
     font-weight: bold;
   }
-  
+
+
   .about__vote {
     display: flex;
     flex-direction: column;
@@ -87,6 +91,7 @@
     gap: 20px;
     font-size: 20px;
     letter-spacing: 6%;
+    
   }
   
   @media (width <= 1200px) {

@@ -44,11 +44,11 @@ useEffect (() => {
       <div className={Styles['form__fields']}>
         <label className={Styles['form__field']}>
           <span className={Styles['form__field-title']}>Email</span>
-          <input onInput={handleInput} className={Styles['form__field-input']} type="email" placeholder="hello@world.com"/>
+          <input name="identifier" onInput={handleInput} className={Styles['form__field-input']} type="email" placeholder="hello@world.com"/>
         </label>
         <label className={Styles['form__field']}>
           <span className={Styles['form__field-title']}>Пароль</span>
-          <input onInput={handleInput} className={Styles['form__field-input']} type="password" placeholder='***********'/>
+          <input name="password" onInput={handleInput} className={Styles['form__field-input']} type="password" placeholder='***********'/>
         </label>
       </div>
       {message.status && (

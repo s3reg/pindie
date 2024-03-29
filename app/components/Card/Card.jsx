@@ -1,5 +1,6 @@
 import Styles from "./Card.module.css";
 
+
 export const Card = (props) => {
     return (
         <article className={Styles['card']}>
