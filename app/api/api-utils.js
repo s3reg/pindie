@@ -35,7 +35,7 @@ export const normalizeData = (data) => {
 }
 
 
-export const getNormalizedGamesDataById = async (url, id) => {
+export const getNormalizedGameDataById = async (url, id) => {
     const data = await getData(`${url}/${id}`)
     return isResponseOk(data) ? normalizeDataObject(data) : data;
 }
@@ -122,6 +122,6 @@ export const vote = async (url, jwt, usersIdArray) => {
 };
 
 
-export const checkIfUsersVoted = (game, userId) => {
+export const checkIfUserVoted = (game, userId) => {
     return game.users.find((user) => user.id === userId)
 }

@@ -4,16 +4,19 @@ import Link from 'next/link';
 import { AuthForm } from '../AuthForm/AuthForm.jsx';
 import { Overlay } from '../Overlay/Overlay';
 import { Popup } from '../Popup/Popup';
-import Styles from './Header.module.css'
-import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation.js';
-import { endpoints } from '@/app/api/config.js';
-import { removeJWT, getJWT, getMe, isResponseOk } from "@/app/api/api-utils.js";
 
+import Styles from './Header.module.css'
+import { useState } from 'react';
+
+import { usePathname } from 'next/navigation.js';
+import { useStore } from "@/app/store/app-store";
 
 export const Header = () => {
-  const [isAuthorized, setIsAuthorized] = useState(false);
+
+
   const [popupIsOpened, setPopupIsOpened] = useState(false);
+
+  const authContext = useStore();
 
   const openPopup = () => {
     setPopupIsOpened(true);
@@ -22,41 +25,32 @@ export const Header = () => {
     setPopupIsOpened(false);
   };
 
-  
-  useEffect(() => {
-    const handleAuthorized = async (jwt) => {
-      const userData = await getMe(endpoints.me, jwt)
-      if (isResponseOk(userData)) {
-        setIsAuthorized(true);
-      }
-      else {
-        setIsAuthorized(false)
-        removeJWT()
-      }
-    };
-    const jwt = getJWT();
-    if (jwt) {
-      handleAuthorized(jwt)
-    }
-  }, []);
 
-  const pathname = usePathname()
+
+  const pathname = usePathname();
+
   const handleLogout = () => {
-    setIsAuthorized(false);
-    removeJWT();
+    authContext.logout(); // Метод logout из контекста
   };
-
-
-
   return (
-    <header className={Styles['header']}>
-      <a href="/" className={Styles['logo']}>
-        <img
-          className={Styles['logo__image']}
-          src="../images/logo.svg"
-          alt="Логотип Pindie"
-        />
-      </a>
+    <header className={Styles["header"]}>
+      {pathname === "/" ? (
+        <span className={Styles["logo"]}>
+          <img
+            className={Styles['logo__image']}
+            src="../images/logo.svg"
+            alt="Логотип Pindie"
+          />
+        </span>
+      ) : (
+        <Link href="/" className={Styles['logo']}>
+          <img
+            className={Styles['logo__image']}
+            src="../images/logo.svg"
+            alt="Логотип Pindie"
+          />
+        </Link>
+      )}
       <nav className={Styles['menu']}>
         <ul className={Styles['menu__list']}>
           <li className={Styles['menu__item']}>
@@ -93,7 +87,7 @@ export const Header = () => {
           </li>
         </ul>
         <div className={Styles['auth']}>
-          {isAuthorized ? (
+          {authContext.isAuth ? (
             <button className={Styles['auth__button']} onClick={handleLogout}>
               Выйти
             </button>
@@ -106,9 +100,8 @@ export const Header = () => {
       </nav>
       <Overlay popupIsOpened={popupIsOpened} closePopup={closePopup} />
       <Popup popupIsOpened={popupIsOpened} closePopup={closePopup}>
-        <AuthForm close={closePopup} setAuth={setIsAuthorized} />
+        <AuthForm close={closePopup} />
       </Popup>
     </header>
-  )
+  );
 }
-
